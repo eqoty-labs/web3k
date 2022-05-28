@@ -1,0 +1,26 @@
+package = swift.web3swift
+language = Objective-C
+
+headers = web3swift/web3swift-Swift.h
+headerFilter = web3swift/*
+
+staticLibraries = libweb3swift.a
+libraryPaths.ios_x64 = web3swift/build/Release-iphonesimulator
+libraryPaths.ios_simulator_arm64 = web3swift/build/Release-iphonesimulator
+libraryPaths.ios_arm64 = web3swift/build/Release-iphoneos
+
+libraryPaths.macos_x64 = web3swift/build/Release
+libraryPaths.macos_arm64 = web3swift/build/Release
+
+libraryPaths.tvos_x64 = web3swift/build/Release-appletvsimulator
+libraryPaths.tvos_simulator_arm64 = web3swift/build/Release-appletvsimulator
+libraryPaths.tvos_arm64 = web3swift/build/Release-appletvos
+
+libraryPaths.watchos_x86 = web3swift/build/Release-watchsimulator
+libraryPaths.watchos_x64 = web3swift/build/Release-watchsimulator
+libraryPaths.watchos_simulator_arm64 = web3swift/build/Release-watchsimulator
+libraryPaths.watchos_arm32 = web3swift/build/Release-watchos
+libraryPaths.watchos_arm64 = web3swift/build/Release-watchos
+
+
+linkerOpts = -L/usr/lib/swift

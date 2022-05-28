@@ -1,18 +1,18 @@
-listOf("iphoneos", "iphonesimulator").forEach { sdk ->
+listOf("iphoneos", "iphonesimulator", "macosx", "appletvos", "appletvsimulator", "watchos", "watchsimulator").forEach { sdk ->
     tasks.create<Exec>("build${sdk.capitalize()}") {
         group = "build"
 
         commandLine(
             "xcodebuild",
-            "-project", "SwiftChachaPoly.xcodeproj",
-            "-target", "SwiftChachaPoly",
-            "-sdk", sdk
+            "-project", "web3swift.xcodeproj",
+            "-target", "web3swift",
+            "-sdk", sdk,
         )
         workingDir(projectDir)
 
         inputs.files(
-            fileTree("$projectDir/SwiftChachaPoly.xcodeproj") { exclude("**/xcuserdata") },
-            fileTree("$projectDir/SwiftChachaPoly")
+            fileTree("$projectDir/web3swift.xcodeproj") { exclude("**/xcuserdata") },
+            fileTree("$projectDir/web3swift")
         )
         outputs.files(
             fileTree("$projectDir/build/Release-${sdk}")

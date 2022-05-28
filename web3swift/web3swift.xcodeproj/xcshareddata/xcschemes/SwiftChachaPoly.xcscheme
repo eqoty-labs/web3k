@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F45DC1CB25DE601A0066291A"
-               BuildableName = "libSwiftChachaPoly.a"
-               BlueprintName = "SwiftChachaPoly"
-               ReferencedContainer = "container:SwiftChachaPoly.xcodeproj">
+               BuildableName = "libweb3swift.a"
+               BlueprintName = "web3swift"
+               ReferencedContainer = "container:web3swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F45DC1CB25DE601A0066291A"
-            BuildableName = "libSwiftChachaPoly.a"
-            BlueprintName = "SwiftChachaPoly"
-            ReferencedContainer = "container:SwiftChachaPoly.xcodeproj">
+            BuildableName = "libweb3swift.a"
+            BlueprintName = "web3swift"
+            ReferencedContainer = "container:web3swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -2,7 +2,7 @@ package org.demo.crypto
 
 import kotlinx.cinterop.autoreleasepool
 import platform.Foundation.NSData
-import swift.chachaPoly.*
+import swift.web3swift.*
 
 actual object ChachaPoly {
 

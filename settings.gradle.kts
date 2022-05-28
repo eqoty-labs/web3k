@@ -1,6 +1,6 @@
 
-rootProject.name = "KMChachaPoly"
+rootProject.name = "web3k"
 
 include(
-    ":SwiftChachaPoly"
+    ":web3swift"
 )
