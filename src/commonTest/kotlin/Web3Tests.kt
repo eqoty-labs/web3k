@@ -1,4 +1,4 @@
-package org.demo.crypto
+package io.eqoty.web3
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

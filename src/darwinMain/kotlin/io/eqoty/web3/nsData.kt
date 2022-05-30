@@ -1,5 +1,5 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
-package org.demo.crypto
+package io.eqoty.web3
 
 import kotlinx.cinterop.*
 import platform.Foundation.NSData
