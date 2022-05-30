@@ -10,7 +10,7 @@ class Web3Tests {
         val expectedAddress = "0x2AD093baD5b62F51A2145B87bB0F2295b1f9d4Fd".lowercase()
 
 
-        assertEquals(expectedAddress, Web3Swift.getAddress(privKey) )
+        assertEquals(expectedAddress, Web3.getAddress(privKey) )
     }
 
     @Test fun `private key to address`() {
@@ -19,7 +19,7 @@ class Web3Tests {
         val expectedAddress = "0x2AD093baD5b62F51A2145B87bB0F2295b1f9d4Fd".lowercase()
 
 
-        assertEquals(expectedAddress, Web3Swift.getAddress(privKey) )
+        assertEquals(expectedAddress, Web3.getAddress(privKey) )
     }
 
 }
