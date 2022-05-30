@@ -5,8 +5,10 @@ listOf("iphoneos", "iphonesimulator", "macosx", "appletvos", "appletvsimulator",
         commandLine(
             "xcodebuild",
             "-project", "web3swift.xcodeproj",
-            "-target", "web3swift",
+            "-scheme", "Web3Swift",
             "-sdk", sdk,
+            "-configuration", "Release",
+            "-derivedDataPath", "build/derivedData",
         )
         workingDir(projectDir)
 
@@ -17,6 +19,12 @@ listOf("iphoneos", "iphonesimulator", "macosx", "appletvos", "appletvsimulator",
         outputs.files(
             fileTree("$projectDir/build/Release-${sdk}")
         )
+        doLast {
+            copy {
+                from("build/derivedData/Build/Products")
+                into("build")
+            }
+        }
     }
 }
 

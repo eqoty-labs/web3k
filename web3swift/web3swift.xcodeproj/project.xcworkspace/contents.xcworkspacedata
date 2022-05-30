@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/lucaspinazzola/Projects/playground-SwiftLib-in-KMMLib/SwiftChachaPoly/web3swift.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
