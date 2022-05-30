@@ -5,7 +5,7 @@ plugins {
     `maven-publish`
 }
 
-group = "org.demo.crypto"
+group = "io.eqoty.web3k"
 version = "1.0"
 
 repositories {
