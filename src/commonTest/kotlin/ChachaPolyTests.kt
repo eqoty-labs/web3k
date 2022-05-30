@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class ChachaPolyTests {
-    @Test fun `encrypt & decrypt simple text`() {
+    @Test fun `encrypt and decrypt simple text`() {
 
         val key = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef".fromHex()
         val nonce = "00000000fedcba9876543210".fromHex()

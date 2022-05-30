@@ -1,9 +1,7 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
 package org.demo.crypto
 
-import kotlinx.cinterop.addressOf
-import kotlinx.cinterop.pin
-import kotlinx.cinterop.usePinned
+import kotlinx.cinterop.*
 import platform.Foundation.NSData
 import platform.Foundation.create
 import platform.posix.memcpy
@@ -13,7 +11,7 @@ internal inline fun ByteArray.toData(offset: Int = 0, length: Int = size - offse
     require(offset + length <= size) { "offset + length > size" }
     if (isEmpty()) return NSData()
     val pinned = pin()
-    return NSData.create(pinned.addressOf(offset), length.toULong()) { _, _ -> pinned.unpin() }
+    return NSData.create(pinned.addressOf(offset) as CPointer<out CPointed>, length.toULong()) { _: CPointer<out CPointed>?, _: ULong -> pinned.unpin() }
 }
 
 internal fun NSData.toByteArray(): ByteArray {

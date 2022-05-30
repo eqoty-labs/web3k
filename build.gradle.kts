@@ -16,8 +16,6 @@ kotlin {
     val darwinTargets = arrayOf(
         "macosX64", "macosArm64",
         "iosArm64", "iosX64", "iosSimulatorArm64",
-        "tvosArm64", "tvosX64", "tvosSimulatorArm64",
-        "watchosArm32", "watchosArm64", "watchosX86", "watchosX64", "watchosSimulatorArm64",
     )
 
     jvm()
@@ -28,10 +26,6 @@ kotlin {
             "iosArm64" -> "iphoneos"
             "iosX64", "iosSimulatorArm64" -> "iphonesimulator"
             "macosX64", "macosArm64" -> "macosx"
-            "tvosArm64", "tvosX64" -> "appletvos"
-            "tvosSimulatorArm64" -> "appletvsimulator"
-            "watchosArm32", "watchosArm64" -> "watchos"
-            "watchosX86", "watchosX64", "watchosSimulatorArm64" -> "watchsimulator"
             else -> error("Unsupported target $name")
         }
         darwinTarget.apply {
