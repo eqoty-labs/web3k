@@ -18,7 +18,7 @@ kotlin {
         "iosArm64", "iosX64", "iosSimulatorArm64",
     )
 
-    jvm()
+//    jvm()
 
     for (target in darwinTargets) {
         val darwinTarget = presets.getByName(target).createTarget(target) as KotlinNativeTarget
@@ -54,12 +54,12 @@ kotlin {
             }
         }
 
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation(kotlin("test-annotations-common"))
-            }
-        }
+//        val jvmTest by getting {
+//            dependencies {
+//                implementation(kotlin("test-junit"))
+//                implementation(kotlin("test-annotations-common"))
+//            }
+//        }
 
         val darwinMain by creating {
             dependsOn(commonMain)
