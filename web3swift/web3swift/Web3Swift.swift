@@ -1,14 +1,18 @@
 import Foundation
-import CryptoKit
 import web3
 
 
 @objc public class Web3Swift : NSObject {
     
-    @objc public class func getAddress(privKey: String) -> String {
+    
+    @objc public class func importAccount(privKey: String) -> Any {
         let keyStorage = EthereumKeyLocalStorage()
-        let account = try! EthereumAccount.importAccount(keyStorage: keyStorage, privateKey: privKey, keystorePassword: "password")
-        return account.address.value
+        return try! EthereumAccount.importAccount(keyStorage: keyStorage, privateKey: privKey, keystorePassword: "password")
+    }
+
+    
+    @objc public class func getAddress(ethereumAccount : Any) -> String? {
+        return (ethereumAccount as! EthereumAccount).address.value
     }
     
 }
