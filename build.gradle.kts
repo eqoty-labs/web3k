@@ -45,12 +45,17 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies{
+                implementation("com.ionspin.kotlin:bignum:0.3.6")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+            }
+        }
 
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2")
             }
         }
 
