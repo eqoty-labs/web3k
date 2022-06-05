@@ -20,6 +20,15 @@ private val AbiType<*>.swiftAbiType: ABIType
             is AbiUInt32 -> ABITypeUint32
             is AbiUInt64 -> ABITypeUint64
             is AbiUInt8 -> ABITypeUint8
+            is AbiAddressArray -> ABITypeAddressArray
+            is AbiBoolArray -> ABITypeBoolArray
+            is AbiInt256Array -> ABITypeInt256Array
+            is AbiStringArray -> ABITypeStringArray
+            is AbiUInt16Array -> ABITypeUint16Array
+            is AbiUInt256Array -> ABITypeUint256Array
+            is AbiUInt32Array -> ABITypeUint32Array
+            is AbiUInt64Array -> ABITypeUint64Array
+            is AbiUInt8Array -> ABITypeUint8Array
         }
 
 actual object Web3 {

@@ -17,6 +17,15 @@ import BigInt
         case uint32
         case uint16
         case uint8
+        case addressArray
+        case boolArray
+        case stringArray
+        case uint256Array
+        case int256Array
+        case uint64Array
+        case uint32Array
+        case uint16Array
+        case uint8Array
     }
     
     @objc public class func dummy(type: ABIType) -> String {
@@ -175,6 +184,24 @@ private struct DynamicFunction: ABIFunction {
             try! encoder.encode(UInt16(param as! Int))
         case .uint8:
             try! encoder.encode(UInt8(param as! Int))
+        case .addressArray:
+            try! encoder.encode((param as! [String]).map{ EthereumAddress($0) })
+        case .boolArray:
+            try! encoder.encode((param as! [Bool]))
+        case .stringArray:
+            try! encoder.encode(param as! [String])
+        case .uint256Array:
+            try! encoder.encode((param as! [String]).map{ BigUInt.init(hex: $0)! })
+        case .int256Array:
+            try! encoder.encode((param as! [String]).map{ BigInt.init(hex: $0)! })
+        case .uint64Array:
+            try! encoder.encode((param as! [Int]).map{ UInt64($0) })
+        case .uint32Array:
+            try! encoder.encode((param as! [Int]).map{ UInt32($0) })
+        case .uint16Array:
+            try! encoder.encode((param as! [Int]).map{ UInt16($0) })
+        case .uint8Array:
+            try! encoder.encode((param as! [Int]).map{ UInt8($0) })
         }
     }
 }
