@@ -42,7 +42,8 @@ actual object Web3 {
     actual suspend fun estimateGas(
         contractAddress: String,
         functionName: String,
-        functionParams: List<AbiType<*>>
+        functionParams: List<AbiType<*>>,
+        sendValue: BigInteger?
     ): BigInteger =
         suspendCancellableCoroutine { continuation ->
             val functionParamsData = functionParams.map { it.value }
@@ -54,7 +55,8 @@ actual object Web3 {
                     contractAddress,
                     functionName,
                     functionParamsData,
-                    functionParamsTypes
+                    functionParamsTypes,
+                    sendValue?.toHexString()
                 ) { error, estimate ->
                     if (error != null) {
                         continuation.cancel(Error(error.toString()))
@@ -74,7 +76,7 @@ actual object Web3 {
         functionParams: List<AbiType<*>>,
         gasLimit: BigInteger,
         sendValue: BigInteger?
-    ): String =
+    ): TxResult =
         suspendCancellableCoroutine { continuation ->
             val functionParamsData = functionParams.map { it.value }
             val functionParamsTypes = functionParams.map { it.swiftAbiType }
@@ -88,11 +90,11 @@ actual object Web3 {
                     functionParamsTypes,
                     gasLimit.toHexString(),
                     sendValue?.toHexString()
-                    ) { error, result ->
+                    ) { error, txHash, nonce ->
                     if (error != null) {
                         continuation.cancel(Error(error.toString()))
                     } else {
-                        continuation.resume(result!!, null)
+                        continuation.resume(TxResult(error?.let{ toString() }, txHash, nonce.toBigInteger()),null)
                     }
                 }
             } catch (t: Throwable){

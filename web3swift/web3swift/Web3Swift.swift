@@ -45,6 +45,7 @@ import BigInt
         functionName: String,
         functionParamsData: [Any],
         functionParamsTypes: [Int],
+        sendValue: String?,
         onComplete: @escaping (Error?, String?) -> Void
     ) {
         let ethereumClient : EthereumClient = ethereumClient as! EthereumClient
@@ -61,8 +62,14 @@ import BigInt
             from: ethereumAccount.address,
             functionParams: functionParams
         )
+        let sendValueBigInt: BigUInt?
+        if sendValue != nil {
+            sendValueBigInt = BigUInt(hex: sendValue!)
+        } else {
+            sendValueBigInt = nil
+        }
         // todo remove gasLimit after https://github.com/argentlabs/web3.swift/issues/224 is resolved
-        let transaction = try! function.transaction( gasLimit: BigUInt.init("10000000")!)
+        let transaction = try! function.transaction(value: sendValueBigInt, gasLimit: BigUInt.init("10000000")!)
         
         ethereumClient.eth_estimateGas(
             transaction,
@@ -82,7 +89,7 @@ import BigInt
         functionParamsTypes: [Int],
         gasLimit: String,
         sendValue: String?,
-        onComplete: @escaping (Error?, String?) -> Void
+        onComplete: @escaping (Error?, String?, Int) -> Void
     ) {
         let ethereumClient : EthereumClient = ethereumClient as! EthereumClient
         let ethereumAccount : EthereumAccount = ethereumAccount as! EthereumAccount
@@ -99,7 +106,7 @@ import BigInt
         )
         let sendValueBigInt: BigUInt?
         if sendValue != nil {
-            sendValueBigInt = BigUInt(sendValue!)
+            sendValueBigInt = BigUInt(hex: sendValue!)
         } else {
             sendValueBigInt = nil
         }
@@ -108,7 +115,7 @@ import BigInt
         
         ethereumClient.eth_sendRawTransaction(transaction,
                                               withAccount: ethereumAccount,
-                                              completion: { error, result in onComplete(error, result) }
+                                              completion: { error, result in onComplete(error, result, transaction.nonce ?? 0) }
         )
     }
     
