@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-    kotlin("multiplatform") version "1.6.21"
-    `maven-publish`
+    kotlin("multiplatform")
+    id("com.vanniktech.maven.publish")
 }
 
-group = "io.eqoty.web3k"
-version = "1.0"
+group = project.property("GROUP") as String
+version = project.property("VERSION_NAME") as String
 
 repositories {
     mavenCentral()
