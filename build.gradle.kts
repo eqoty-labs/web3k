@@ -81,3 +81,12 @@ kotlin {
         }
     }
 }
+
+
+plugins.withId("com.vanniktech.maven.publish.base") {
+    configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
+        publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
+        signAllPublications()
+        pomFromGradleProperties()
+    }
+}
