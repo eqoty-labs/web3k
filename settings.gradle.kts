@@ -12,9 +12,9 @@ pluginManagement {
     }
 
     plugins {
-        id("de.fayard.refreshVersions") version versions["version.refreshVersions"] as String
-        kotlin("multiplatform") version versions["version.kotlin"] as String
-        id("com.vanniktech.maven.publish") version versions["version.gradleMavenPublishPlugin"] as String
+        id("de.fayard.refreshVersions") version versions["version.refreshVersions"] as String apply false
+        kotlin("multiplatform") version versions["version.kotlin"] as String apply false
+        id("com.vanniktech.maven.publish") version versions["version.gradleMavenPublishPlugin"] as String apply false
     }
 }
 
